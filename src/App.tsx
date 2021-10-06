@@ -1,26 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {useStore} from "./store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const pagesVisited = useStore(state => state.pagesVisited)
+    const incrementPageVisit = useStore(state => state.incrementFoodPageVisited)
+    return (
+        <div className="App">
+            <h1>Hello Visitor</h1>
+            <br/>
+            <h2>Total Food Pages Visited: {pagesVisited}</h2>
+            <button onClick={incrementPageVisit}>Increment Page Visit</button>
+        </div>
+    );
 }
 
 export default App;
